@@ -50,7 +50,7 @@ class PersonalInformationController extends Controller
     {
         $courses = DB::table('education')
             ->leftJoin('projects', 'education.ProjectId', '=', 'projects.Id')
-            ->orderBy('Education.OrderItem', 'desc')
+            ->orderBy('education.OrderItem', 'desc')
             ->get();
 
         return response()->json($courses);
