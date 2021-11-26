@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ProjectTools extends Model
 {
     //
-    protected $table = "ProjectTools";
+    protected $table = "projecttools";
 
     public $incrementing = false;
 

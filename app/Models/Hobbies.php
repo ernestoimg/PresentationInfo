@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Hobbies extends Model
 {
     //
-    protected $table = "Hobbies";
+    protected $table = "hobbies";
 
     public $incrementing = false;
 
