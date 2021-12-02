@@ -107,11 +107,7 @@
         </div>
         <div class="col-lg-4">
           <div class="helpful-links">
-<<<<<<< HEAD
             <h4>Enlaces de ayuda</h4>
-=======
-            <h4>Helpful Links</h4>
->>>>>>> 5b225e1042d6082e7d85fcfca6cf0b98ec269fcc
             <div class="row">
               <div class="col-lg-6 col-sm-6">
                 <ul>
@@ -131,11 +127,7 @@
         </div>
         <div class="col-lg-4">
           <div class="contact-us">
-<<<<<<< HEAD
             <h4>Datos de Contacto</h4>
-=======
-            <h4>Contact Us</h4>
->>>>>>> 5b225e1042d6082e7d85fcfca6cf0b98ec269fcc
             <p>ivan.2015.puebla@gmail.com</p>
             <div class="row">
               <div class="col-lg-6">

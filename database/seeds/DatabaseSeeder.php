@@ -17,11 +17,7 @@ use Database\Seeders\ProjectTool;
 
 class DatabaseSeeder extends Seeder
 {
-<<<<<<< HEAD
     public $dir = null;
-=======
-    public string $dir;
->>>>>>> 5b225e1042d6082e7d85fcfca6cf0b98ec269fcc
 
     public function getId()
     {

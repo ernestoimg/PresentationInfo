@@ -34,37 +34,23 @@ class PersonalInformationController extends Controller
 
     public function GetHobbies(Hobbies $hobbies)
     {
-<<<<<<< HEAD
         $activeHobbies = DB::table('Hobbies')->where('IsVisible', 1)->get();
-=======
-        $activeHobbies = DB::table('hobbies')->where('IsVisible', 1)->get();
->>>>>>> 5b225e1042d6082e7d85fcfca6cf0b98ec269fcc
 
         return response()->json($activeHobbies);
     }
 
     public function GetProjects(Projects $projects)
     {
-<<<<<<< HEAD
         $activeProject = DB::table('Projects')->where('IsVisible', 1)->orderBy('Order')->get();
-=======
-        $activeProject = DB::table('projects')->where('IsVisible', 1)->orderBy('Order')->get();
->>>>>>> 5b225e1042d6082e7d85fcfca6cf0b98ec269fcc
 
         return response()->json($activeProject);
     }
 
     public function GetCourses()
     {
-<<<<<<< HEAD
         $courses = DB::table('Education')
             ->leftJoin('Projects', 'Education.ProjectId', '=', 'Projects.Id')
             ->orderBy('Education.OrderItem', 'desc')
-=======
-        $courses = DB::table('education')
-            ->leftJoin('projects', 'education.ProjectId', '=', 'projects.Id')
-            ->orderBy('education.OrderItem', 'desc')
->>>>>>> 5b225e1042d6082e7d85fcfca6cf0b98ec269fcc
             ->get();
 
         return response()->json($courses);
