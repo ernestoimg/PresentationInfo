@@ -13,8 +13,12 @@
         "fruitcake/laravel-cors": "^1.0",
         "guzzlehttp/guzzle": "^6.3",
         "laravel/framework": "^7.0",
+<<<<<<< HEAD
         "laravel/tinker": "^2.0",
         "swiftmailer/swiftmailer": "6.0"
+=======
+        "laravel/tinker": "^2.0"
+>>>>>>> 5b225e1042d6082e7d85fcfca6cf0b98ec269fcc
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",

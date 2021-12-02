@@ -43,6 +43,9 @@ Route::get('/Project/ProjectTools/{projectId}', ['as' => 'projectToolsByProject'
 Route::get('/Project/ProjectImages/{projectId}', ['as' => 'projectimages', 'uses' => 'Site\User\PersonalInformationController@getProjectImages']);
 
 Route::get('/CV/GetCV', ['as' => 'getCV', 'uses' => 'Site\User\PersonalInformationController@GetCV']);
+<<<<<<< HEAD
 
 
 Route::post('/SendEmail',['as'=>'sendmail','uses'=>'Site\User\SendEmailController@PostSendEmail']);
+=======
+>>>>>>> 5b225e1042d6082e7d85fcfca6cf0b98ec269fcc
