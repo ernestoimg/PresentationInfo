@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class ProjectImageListModel extends Model
 {
     //
-    protected $table = "ProjectImageList";
+    protected $table = "projectimagelist";
 
     public $increment = false;
 
