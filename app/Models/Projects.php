@@ -8,7 +8,7 @@ class Projects extends Model
 {
     //
     
-    protected $table = 'Projects';
+    protected $table = 'projects';
 
     public $incrementing = false;
 

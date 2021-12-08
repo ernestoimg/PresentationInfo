@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Site\User;
 
-
 use App\Http\Controllers\Controller;
 use Exception;
 use Illuminate\Http\Request;
@@ -16,6 +15,15 @@ class SendEmailController extends Controller
     //
     public function PostSendEmail(){
         
+        $test = new ResponseSucess;
 
+        $test->result = "Testing";
+
+        dd($test);
+        return response()->json($test);
     }
+}
+
+class ResponseSucess{
+    public $result;
 }

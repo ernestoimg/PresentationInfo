@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Site\User\PersonalInfoController;
 use App\Http\Controllers\Site\User\PersonalInformationController;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,5 +45,7 @@ Route::get('/Project/ProjectImages/{projectId}', ['as' => 'projectimages', 'uses
 
 Route::get('/CV/GetCV', ['as' => 'getCV', 'uses' => 'Site\User\PersonalInformationController@GetCV']);
 
-
 Route::post('/SendEmail',['as'=>'sendmail','uses'=>'Site\User\SendEmailController@PostSendEmail']);
+
+
+Route::get('/test-email',['as'=>'sendmessageemail','uses'=>'Site\User\SendEmailController@PostSendEmail']);
