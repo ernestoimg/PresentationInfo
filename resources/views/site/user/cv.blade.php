@@ -1,9 +1,7 @@
 @extends('Layout.layout')
 
 @section('content')
-<style>
 
-</style>
 <div class="page-heading-cv">
     <div class="container">
         <div class="row">
@@ -19,9 +17,6 @@
     </div>
 </div>
 <a class='flotante' href='{{route("home")}}'><img src='images/search-icon-00.png' style="border:0;" /></a>
-<div>
-
-</div>
 
 <aside class="d-flex justify-content-center">
     <img src="{{asset('/images/CVPage1.jpg')}}" style="width: 80%; margin-top:5rem;" />

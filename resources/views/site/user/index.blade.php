@@ -10,8 +10,8 @@
           <img id="image-profile" src="images/ProfileImage.png" class="img-fluid" alt="" />
         </div>
         <div class="top-text header-text">
-          <h6 id="ProfessionTitle"></h6>
-          <h2 id="FullNameTitle"></h2>
+          <h6 id="ProfessionTitle" style="text-shadow: 0 0 10px #191a20;"></h6>
+          <h2 id="FullNameTitle" style="text-shadow: 0 0 10px #191a20;"></h2>
         </div>
       </div>
       <div class="col-lg-10 offset-lg-1">
@@ -89,7 +89,7 @@
 
 <template id="TemplateHobby">
   <div class="col-sm-3 mt-2">
-    <li id="hobby_!token"><a href="#"><span id="icon_!token" class="icon d-flex align-items-center justify-content-center"></span><b id="name_!token"></b></a></li>
+    <li id="hobby_!token"><a href="#"><span id="icon_!token" class="icon d-flex align-items-center justify-content-center"></span><b id="name_!token" style="text-shadow: 0 0 10px #191a20;"></b></a></li>
   </div>
 </template>
 

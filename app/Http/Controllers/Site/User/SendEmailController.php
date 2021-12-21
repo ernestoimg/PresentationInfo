@@ -3,27 +3,31 @@
 namespace App\Http\Controllers\Site\User;
 
 use App\Http\Controllers\Controller;
-use Exception;
-use Illuminate\Http\Request;
-use App;
-use DebugBar\DebugBar;
-use Illuminate\Support\Facades\UserSendMailer;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendNewMail;
 
 
 class SendEmailController extends Controller
 {
+
     //
-    public function PostSendEmail(){
-        
-        $test = new ResponseSucess;
+    public static function PostSendEmail($request)
+    {
 
-        $test->result = "Testing";
+        Mail::to('ivan.2015.puebla@gmail.com')
+            ->queue(new SendNewMail($request));
+   
+        Mail::to($request["Email"])
+            ->queue(new SendNewMail($request));    
+    }
 
-        dd($test);
-        return response()->json($test);
+    public function Contactme()
+    {
+        return view('site.user.contactme');
     }
 }
 
-class ResponseSucess{
+class ResponseSucess
+{
     public $result;
 }

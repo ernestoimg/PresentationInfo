@@ -45,7 +45,6 @@ Route::get('/Project/ProjectImages/{projectId}', ['as' => 'projectimages', 'uses
 
 Route::get('/CV/GetCV', ['as' => 'getCV', 'uses' => 'Site\User\PersonalInformationController@GetCV']);
 
-Route::post('/SendEmail',['as'=>'sendmail','uses'=>'Site\User\SendEmailController@PostSendEmail']);
+Route::get('/contactme', ['as' => 'contactme', 'uses' => 'Site\User\SendEmailController@Contactme']);
 
-
-Route::get('/test-email',['as'=>'sendmessageemail','uses'=>'Site\User\SendEmailController@PostSendEmail']);
+Route::post('/addMessage',['as'=>'add.message','uses'=>'Site\User\PersonalInformationController@PostComment']);

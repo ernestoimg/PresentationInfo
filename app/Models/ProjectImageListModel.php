@@ -12,4 +12,5 @@ class ProjectImageListModel extends Model
     public $increment = false;
 
     protected $fillable = ["Id","ProjectId","Images"];
+    
 }

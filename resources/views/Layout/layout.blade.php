@@ -71,9 +71,9 @@
             <!-- ***** Menu Start ***** -->
             <ul class="nav">
               <li><a href="{{route('home')}}" class="active">Home</a></li>
-              <li><a href="{{route('cv')}}">CV</a></li>
-              <li><a href="listing.html">Listing</a></li>
-              <li><a href="contact.html">Contact Us</a></li>
+              <li><a href="{{route('cv')}}">Curriculum</a></li>
+              <!--<li><a href="listing.html">Listing</a></li>-->
+              <li><a href="{{route('contactme')}}">Contacto</a></li>
               <li>
                 <div class="main-white-button"><a href="#"><i class="fa fa-camera-retro fa-lg"></i> Add Your Listing</a></div>
               </li>
@@ -111,15 +111,15 @@
             <div class="row">
               <div class="col-lg-6 col-sm-6">
                 <ul>
-                  <li><a href="#">Categories</a></li>
-                  <li><a href="#">Reviews</a></li>
-                  <li><a href="#">Listing</a></li>
-                  <li><a href="#">Contact Us</a></li>
+                  <!--<li><a href="#">Categories</a></li>
+                  <li><a href="#">Reviews</a></li>-->
+                  <li><a href="{{route('cv')}}">Curriculum</a></li>
+                  <li><a href="{{route('contactme')}}">Contactame</a></li>
                 </ul>
               </div>
               <div class="col-lg-6">
                 <ul>
-                  <li><a href="#">About Me</a></li>
+                  <!--<li><a href="#">About Me</a></li>-->
                 </ul>
               </div>
             </div>

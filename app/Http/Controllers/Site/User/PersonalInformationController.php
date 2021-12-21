@@ -7,19 +7,22 @@ use Illuminate\Http\Request;
 
 /* Models */
 use App\Models\PersonalInformation;
+use App\Models\ContacteMe;
 use App\Models\Hobbies;
 use App\Models\Projects;
 use App\Models\WorkExperienceModel;
 use App\Models\ProjectToolsModel;
 use App\Models\ProjectImageListModel;
 use App\Models\AttachFilesModel;
+use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\App;
 
 class PersonalInformationController extends Controller
 {
     //
-     /**
+    /**
      * Show the profile for a given user.
      *
      * @param  int  $id
@@ -28,6 +31,8 @@ class PersonalInformationController extends Controller
     public function GetPersonalInfo(PersonalInformation $personalInformations)
     {
         $personalInfo = $personalInformations->select()->first();
+
+        //SendEmailController::PostSendEmail();
 
         return response()->json($personalInfo);
     }
@@ -102,8 +107,40 @@ class PersonalInformationController extends Controller
 
     public function GetCV()
     {
-        $cvfile = AttachFilesModel::where('name','ErnestoIvanMartinezGarcia')->get();
+        $cvfile = AttachFilesModel::where('name', 'ErnestoIvanMartinezGarcia')->get();
 
         return response()->json($cvfile);
     }
+
+    public function PostComment(\App\Http\Requests\RequestContactMe $request)
+    {
+        $result = new DataResponse();
+        try {
+            $contactme = new ContacteMe();
+
+            $contactme->Id = $request->input('Id');
+            $contactme->Email = $request->input('Email');
+            $contactme->Issue = $request->input('Issue');
+            $contactme->Message = $request->input('Message');
+
+            $contactme->save();
+
+            SendEmailController::PostSendEmail($request->all());
+
+            $result->hasError = false;
+            $result->message="Se ha enviado correctamente el mensaje";
+
+        } catch (Exception  $e) {
+
+            $result->hasError = true;
+            $result->message = $e->getMessage();
+        }
+
+        return response()->json($result);
+    }
+}
+
+class DataResponse{
+    public $hasError;
+    public $message;
 }

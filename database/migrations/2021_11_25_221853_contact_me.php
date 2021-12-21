@@ -16,9 +16,10 @@ class ContactMe extends Migration
         //
         Schema::create('ContactMe',function(Blueprint $table){
             $table->engine="InnoDB";
-            $table->uuid('Id')->nullable(false);
+            $table->uuid('Id')->nullable(false)->unique();
             $table->string('Email',100);
             $table->text('Issue')->nullable();
+            $table->text('Message');
             $table->timestamps();
         });
     }
