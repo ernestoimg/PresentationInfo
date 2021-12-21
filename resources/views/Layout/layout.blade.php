@@ -35,7 +35,7 @@
   <link rel="stylesheet" href="{{asset('OwlCarousel/dist/assets/owl.theme.default.min.css')}}">
 
   <!-- Custom css files -->
-  <link rel="stylesheet" href="{{asset('css/custom-0.0.css')}}">
+  <link rel="stylesheet" href="{{asset('css/custom-0.1.css')}}">
 
   <!-- Load JQuery 3.6.0 -->
   <script src="{{asset('jquery/jquery-3.6.js')}}"></script>
@@ -75,7 +75,7 @@
               <!--<li><a href="listing.html">Listing</a></li>-->
               <li><a href="{{route('contactme')}}">Contacto</a></li>
               <li>
-                <div class="main-white-button"><a href="#"><i class="fa fa-camera-retro fa-lg"></i> Add Your Listing</a></div>
+                <div class="main-white-button"><a href="javascript:void(0);" id="OpenChatTelegram"><i class="fa fa-telegram" aria-hidden="true"></i> Enviar un mensaje</a></div>
               </li>
             </ul>
             <a class='menu-trigger'>
@@ -150,7 +150,7 @@
   <script src="{{asset('js/owl-carousel.js')}}"></script>
   <script src="{{asset('js/animation.js')}}"></script>
   <script src="{{asset('js/imagesloaded.js')}}"></script>
-  <script src="{{asset('js/custom.js')}}"></script>
+  <script src="{{asset('js/custom-0.0.js')}}"></script>
 
   <!--JS OwlCarousel-->
   <script src="{{asset('OwlCarousel/dist/owl.carousel.min.js')}}"></script>

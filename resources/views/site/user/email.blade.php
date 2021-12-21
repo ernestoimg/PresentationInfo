@@ -62,7 +62,7 @@
                                 <tr>
                                     <td style="padding:0;width:50%;" align="left">
                                         <p style="margin:0;font-size:14px;line-height:16px;font-family:Arial,sans-serif;color:#ffffff;">
-                                            &reg; <br /><a href="http://www.example.com" style="color:#ffffff;text-decoration:underline;">Agradezco tu atención y tiempo, estaré en contacto contigo lo más pronto posible.</a>
+                                            &reg; <br /><a style="color:#ffffff;text-decoration:underline;">Agradezco tu atención y tiempo, estaré en contacto contigo lo más pronto posible.</a>
                                         </p>
                                     </td>
                                     <!--

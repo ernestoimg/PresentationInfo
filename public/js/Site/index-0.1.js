@@ -10,12 +10,21 @@ var IndexModule = (function () {
         // Controls  _______________________________________________________
         IconPause: $("#ElemIconPause"),
         PauseIconCarousel: $("#PauseIconCarousel"),
+        ChatBox: $(".chatbox"),
+        ChatBoxTitle: $(".chatbox__title"),
+        ChatboxTitleClose: $(".chatboxTitleClose"),
+        ChatboxCredentials: $(".chatbox__credentials"),
+        ChatboxBody:$(".chatbox__body"),
+        SendCommentChatBox: $("#SendCommentChatBox"),
+        MessageChatBox: $("#MessageChatBox"),
+        TemplateResponseClient: $("#TemplateResponseClient"),
+        TemplateResponseIMG: $("#TemplateResponseIMG"),
         // Functions _______________________________________________________
         ChangeIcon: function (event) {
             var control = $(`#${event.target.id}`);
             var id = control.data("WorkExpId");
-            if(id==undefined){
-                id = event.currentTarget.id.substring(event.currentTarget.id.indexOf("_")+1,event.currentTarget.id.length);
+            if (id == undefined) {
+                id = event.currentTarget.id.substring(event.currentTarget.id.indexOf("_") + 1, event.currentTarget.id.length);
             }
             var workexperiences = WorkExperiencesSection.WorkExperiences;
 
@@ -24,15 +33,15 @@ var IndexModule = (function () {
             });
 
             // Loop through worlExperiences
-            for(var item = 0; item < workexperiences.length; item++){
+            for (var item = 0; item < workexperiences.length; item++) {
                 // get the current item 
                 var currentItem = workexperiences[item];
 
                 var buttonElement = $(`#ElemIconPause_${currentItem.Id}`);
-                
-                if(buttonElement.hasClass("fa-pause")){
+
+                if (buttonElement.hasClass("fa-pause")) {
                     buttonElement.removeClass("fa-pause").addClass("fa-play");
-                }else{
+                } else {
                     buttonElement.removeClass("fa-play").addClass("fa-pause");
                 }
 
@@ -44,16 +53,16 @@ var IndexModule = (function () {
                 WorkExperiencesSection.Container.trigger('stop.owl.autoplay');
                 buttonElement.off("click").click(GlobalSection.ChangeIcon);
                 return;
-            } 
-            
-            if(control.hasClass("fa-play")){
+            }
+
+            if (control.hasClass("fa-play")) {
                 control.removeClass("fa-play").addClass("fa-pause");
                 WorkExperiencesSection.Container.trigger('play.owl.autoplay', [7000]);
                 buttonElement.off("click").click(GlobalSection.ChangeIcon);
                 return;
             }
 
-            
+
         }
     };
 
@@ -339,8 +348,8 @@ var IndexModule = (function () {
                 );
                 workExpCorpControl.text(currentItem.Company);
 
-                elemIconPauseControl.data("WorkExpId",currentItem.Id);
-                elemIconPauseControl.off("click").click(elemIconPauseControl,GlobalSection.ChangeIcon);
+                elemIconPauseControl.data("WorkExpId", currentItem.Id);
+                elemIconPauseControl.off("click").click(elemIconPauseControl, GlobalSection.ChangeIcon);
             }
 
             WorkExperiencesSection.Container.owlCarousel({
@@ -369,11 +378,50 @@ var IndexModule = (function () {
                 PersonalInfoSection.BindControls();
             });
         },
+        ToggleChatBox: function () {
+            GlobalSection.ChatBox.toggleClass('chatbox--tray');
+            GlobalSection.ChatBox.removeClass('chatbox--empty');
+        },
+        CloseChatBox: function (e) {
+            e.stopPropagation();
+            GlobalSection.ChatBox.addClass('chatbox--closed');
+        },
+        TransitionedChatBox: function () {
+            if (GlobalSection.ChatBox.hasClass('chatbox--closed'))
+                GlobalSection.ChatBox.remove();
+        },
+        CredentialsChatBox: function (e) {
+            e.preventDefault();
 
+        },
+        SendCommentChatBox: function () {
+            var message = GlobalSection.MessageChatBox.val();
+
+            if (Boolean(message)) {
+                var template = GlobalSection.TemplateResponseClient.html();
+
+                template = template.replace(/<!--Message-->/ig,message);
+
+                GlobalSection.ChatboxBody.append(template);
+
+                GlobalSection.MessageChatBox.val("");
+            }
+
+        }
     }
 
     var Init = function () {
         Pageworkflow.ConsultPersonalInfo();
+
+        // Set the events to the controls
+        GlobalSection.ChatBoxTitle.on("click").click(Pageworkflow.ToggleChatBox);
+        GlobalSection.ChatboxTitleClose.on("click").click(Pageworkflow.CloseChatBox);
+        GlobalSection.ChatBox.on('transitionend', function () {
+            Pageworkflow.TransitionedChatBox();
+        });
+        GlobalSection.ChatboxCredentials.on('click').click(Pageworkflow.CredentialsChatBox);
+
+        GlobalSection.SendCommentChatBox.on('click').click(Pageworkflow.SendCommentChatBox);
     };
 
     return {

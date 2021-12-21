@@ -77,7 +77,10 @@
 
 	
 
-	
+	$("#OpenChatTelegram").on("click", function() {
+    $(".chatbox").toggleClass('chatbox--tray');
+    $(".chatbox").removeClass('chatbox--empty');
+  })
 
 
 

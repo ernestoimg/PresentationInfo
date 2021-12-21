@@ -24,8 +24,6 @@
                     </figure>
                 </div>
                 <div class="card p-lg-5 p-md-2 p-sm-2 p-xs-2">
-                    <div id="AlertContainer">
-                    </div>
                     <form id="ContactMeForm" novalidate autocomplete="nope">
                         <div class="form-group mb-2">
                             <div class="form-check">
@@ -64,6 +62,8 @@
                             <button type="button" class="btn btn-dark" id="SaveComment">Enviar información</button>
                         </div>
                     </form>
+                    <div class="mt-3" id="AlertContainer">
+                    </div>
                 </div>
             </div>
         </div>

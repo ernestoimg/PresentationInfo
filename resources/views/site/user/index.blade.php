@@ -87,9 +87,48 @@
   </div>
 </div>
 
+<div class="chatbox chatbox--tray chatbox--empty" style="z-index:6">
+  <div class="chatbox__title">
+    <h5><a href="javascript:void(0);">Chat</a></h5>
+    <button class="chatbox__title__tray">
+      <span></span>
+    </button>
+    <button class="chatbox__title__close">
+      <span>
+        <svg viewBox="0 0 12 12" width="12px" height="12px">
+          <line stroke="#FFFFFF" x1="11.75" y1="0.25" x2="0.25" y2="11.75"></line>
+          <line stroke="#FFFFFF" x1="11.75" y1="11.75" x2="0.25" y2="0.25"></line>
+        </svg>
+      </span>
+    </button>
+  </div>
+  <div class="chatbox__body">
+
+    <div class="chatbox__body__message chatbox__body__message--right" style="line-height: 15px">
+      <p>Recuerda no refrescar o cambiar de página, ya que si no el historico del chat será eliminado. </p>
+    </div>
+    <div class="chatbox__body__message chatbox__body__message--right" style="line-height: 15px">
+      <p>Hola soy Iván, ¿Con quién tengo el gusto?</p>
+    </div>
+  </div>
+  <form class="chatbox__credentials">
+    <div class="form-group">
+      <label for="inputName">Name:</label>
+      <input type="text" class="form-control" id="inputName" required>
+    </div>
+    <div class="form-group">
+      <label for="inputEmail">Email:</label>
+      <input type="email" class="form-control" id="inputEmail" required>
+    </div>
+    <button type="button" class="btn btn-success btn-block">Enter Chat</button>
+  </form>
+  <textarea class="chatbox__message" id="MessageChatBox" placeholder="Escribe tu mensaje..."></textarea>
+  <button class="btn btn-dark btn-block m-3" id="SendCommentChatBox">Enviar</button>
+</div>
+
 <template id="TemplateHobby">
   <div class="col-sm-3 mt-2">
-    <li id="hobby_!token"><a href="#"><span id="icon_!token" class="icon d-flex align-items-center justify-content-center"></span><b id="name_!token" style="text-shadow: 0 0 10px #191a20;"></b></a></li>
+    <li id="hobby_!token"><a href="#"><span id="icon_!token" class="icon d-flex align-items-center justify-content-center"></span><b id="name_!token"></b></a></li>
   </div>
 </template>
 
@@ -193,8 +232,20 @@
 
   </div>
 </template>
+
+<template id="TemplateResponseClient">
+  <div class="chatbox__body__message chatbox__body__message--left" style="line-height: 15px">
+    <p><!--Message--></p>
+  </div>
+</template>
+
+<template id="TemplateResponseIMG">
+  <div class="chatbox__body__message chatbox__body__message--right" style="line-height: 15px">
+    <p>Recuerda no refrescar o cambiar de página, ya que si no el historico del chat será eliminado. </p>
+  </div>
+</template>
 @stop
 
 @section('scripts')
-<script src="{{asset('js/Site/index-0.0.js')}}"></script>
+<script src="{{asset('js/Site/index-0.1.js')}}"></script>
 @stop
