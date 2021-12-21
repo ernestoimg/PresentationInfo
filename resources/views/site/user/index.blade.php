@@ -235,17 +235,19 @@
 
 <template id="TemplateResponseClient">
   <div class="chatbox__body__message chatbox__body__message--left" style="line-height: 15px">
-    <p><!--Message--></p>
+    <p>
+      <!--Message-->
+    </p>
   </div>
 </template>
 
 <template id="TemplateResponseIMG">
   <div class="chatbox__body__message chatbox__body__message--right" style="line-height: 15px">
-    <p>Recuerda no refrescar o cambiar de página, ya que si no el historico del chat será eliminado. </p>
+    <p><!--Message--></p>
   </div>
 </template>
 @stop
 
 @section('scripts')
-<script src="{{asset('js/Site/index-0.1.js')}}"></script>
+<script src="{{asset('js/Site/index-0.2.js')}}"></script>
 @stop

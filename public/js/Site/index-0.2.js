@@ -7,6 +7,10 @@ var IndexModule = (function () {
     var GlobalSection = {
         // Variables _______________________________________________________
         PersonalInfo: null,
+        SessionGuid: null,
+        ChatActive: false,
+        CurrentMessage: null,
+        MessagesProcessing: [],
         // Controls  _______________________________________________________
         IconPause: $("#ElemIconPause"),
         PauseIconCarousel: $("#PauseIconCarousel"),
@@ -14,7 +18,7 @@ var IndexModule = (function () {
         ChatBoxTitle: $(".chatbox__title"),
         ChatboxTitleClose: $(".chatboxTitleClose"),
         ChatboxCredentials: $(".chatbox__credentials"),
-        ChatboxBody:$(".chatbox__body"),
+        ChatboxBody: $(".chatbox__body"),
         SendCommentChatBox: $("#SendCommentChatBox"),
         MessageChatBox: $("#MessageChatBox"),
         TemplateResponseClient: $("#TemplateResponseClient"),
@@ -63,7 +67,62 @@ var IndexModule = (function () {
             }
 
 
-        }
+        },
+        ReloadChat: function () {
+            if (GlobalSection.ChatActive) {
+                var responses = [];
+                var getUpdatesPromise = ConfigurationModule.AjaxTelegramSendGet("getUpdates");
+
+                getUpdatesPromise.then(function (serviceResponse) {
+                    serviceResponse.result.map(function (obj) {
+                        if (obj.message != undefined && obj.message.reply_to_message != undefined)
+                            responses.push(obj);
+                    })
+
+                    responses = responses.filter(x => {
+                        return x.message.reply_to_message.message_id == GlobalSection.CurrentMessage.result.message_id
+                    });
+
+                    // Loop through the responses
+                    for (var i = 0; i < responses.length; i++) {
+                        // Get the current message
+                        var currentMessage = responses[i];
+                        var isRepeat = GlobalSection.MessagesProcessing.filter(obj => obj == currentMessage.message.message_id);
+
+                        if (isRepeat.length > 0) {
+                            return;
+                        }
+
+                        var dataRequest = {
+                            id: ConfigurationModule.NewGuid(),
+                            message: currentMessage.message.text,
+                            sessionid: ConfigurationModule.Session.sessionId,
+                            messageid: currentMessage.message.message_id,
+                            isresponse: true
+                        }
+
+                        var MessageTelegramPostPromise = ConfigurationModule.AjaxSendPost('Message', dataRequest);
+
+                        MessageTelegramPostPromise.then(function (serviceResponse) {
+
+                            var template = GlobalSection.TemplateResponseIMG.html();
+
+                            if (!serviceResponse.hasClass) {
+                                template = template.replace(/<!--Message-->/ig, currentMessage.message.text);
+                            } else {
+                                template = template.replace(/<!--Message-->/ig, serviceResponse.message);
+                            }
+                            GlobalSection.ChatboxBody.append(template);
+
+                            GlobalSection.MessageChatBox.val("");
+
+                            GlobalSection.MessagesProcessing.push(currentMessage.message.message_id);
+
+                        });
+                    }
+                });
+            }
+        },
     };
 
 
@@ -363,6 +422,8 @@ var IndexModule = (function () {
                 autoplayTimeout: 7000,
                 autoplayHoverPause: true
             });
+
+            Pageworkflow.BoxChatHistory();
         }
     }
 
@@ -398,20 +459,100 @@ var IndexModule = (function () {
             var message = GlobalSection.MessageChatBox.val();
 
             if (Boolean(message)) {
-                var template = GlobalSection.TemplateResponseClient.html();
 
-                template = template.replace(/<!--Message-->/ig,message);
+                var dataRequest = {
+                    chat_id: ConfigurationModule.Constants.TELEGRAM_CHAT_ID,
+                    text: `${ConfigurationModule.Session.sessionId}: ${message}`
+                }
 
-                GlobalSection.ChatboxBody.append(template);
+                var telegramPostMessagePromise = ConfigurationModule.AjaxTelegramSendPost("sendMessage", dataRequest);
 
-                GlobalSection.MessageChatBox.val("");
+                telegramPostMessagePromise.then(function (serviceResponse) {
+
+                    var dataResponse = serviceResponse;
+                    GlobalSection.CurrentMessage = dataResponse;
+
+                    var dataRequest1 = {
+                        id: ConfigurationModule.NewGuid(),
+                        message: message,
+                        sessionid: ConfigurationModule.Session.sessionId,
+                        messageid: dataResponse.result.message_id,
+                        isresponse: false
+                    }
+
+                    var MessageTelegramPostPromise = ConfigurationModule.AjaxSendPost('Message', dataRequest1);
+
+                    MessageTelegramPostPromise.then(function (servResponse) {
+                        var template = GlobalSection.TemplateResponseClient.html();
+
+                        if (!servResponse.hasClass) {
+                            template = template.replace(/<!--Message-->/ig, message);
+                        } else {
+                            template = template.replace(/<!--Message-->/ig, serviceResponse.message);
+                        }
+                        GlobalSection.ChatboxBody.append(template);
+
+                        GlobalSection.MessageChatBox.val("");
+
+                        GlobalSection.ChatActive = true;
+                    });
+                });
             }
+        },
+        GenerateUUIDSession: function () {
+            return new Promise(function (resolve, reject) {
+                if (ConfigurationModule.Session.sessionId == undefined) {
 
+                    var newGuidSession = ConfigurationModule.NewGuid();
+
+                    GlobalSection.SessionGuid = newGuidSession;
+
+                    ConfigurationModule.Session = {
+                        sessionId: newGuidSession
+                    };
+
+                    ConfigurationModule.SessionStorageStoreObject("SessionGuid", {
+                        sessionId: newGuidSession
+                    });
+                }
+                resolve();
+            });
+
+        },
+        BoxChatHistory: function () {
+            var sessionUUId = ConfigurationModule.Session.sessionId;
+
+            var getMessagePromise = ConfigurationModule.AjaxSendGet(`getMessages/${sessionUUId}`);
+
+            getMessagePromise.then(function (serviceResponse) {
+
+                var result = serviceResponse;
+
+                // Loop through the messagehistory
+                for (var i = 0; i < result.length; i++) {
+                    // Get the current message history
+                    var currentMessageHistory = result[i];
+                    var template = "";
+
+                    if (currentMessageHistory.IsResponse) {
+                        template = GlobalSection.TemplateResponseIMG.html();
+                    }else{
+                        template = GlobalSection.TemplateResponseClient.html();
+                    }
+
+                    template = template.replace(/<!--Message-->/ig, currentMessageHistory.Message);
+
+                    GlobalSection.ChatboxBody.append(template);
+                }
+            });
         }
     }
 
     var Init = function () {
-        Pageworkflow.ConsultPersonalInfo();
+
+        Pageworkflow.GenerateUUIDSession().then(() => {
+            Pageworkflow.ConsultPersonalInfo();
+        });
 
         // Set the events to the controls
         GlobalSection.ChatBoxTitle.on("click").click(Pageworkflow.ToggleChatBox);
@@ -422,6 +563,8 @@ var IndexModule = (function () {
         GlobalSection.ChatboxCredentials.on('click').click(Pageworkflow.CredentialsChatBox);
 
         GlobalSection.SendCommentChatBox.on('click').click(Pageworkflow.SendCommentChatBox);
+
+        setInterval(GlobalSection.ReloadChat, 30000);
     };
 
     return {

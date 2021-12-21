@@ -41,7 +41,8 @@
   <script src="{{asset('jquery/jquery-3.6.js')}}"></script>
 
   <!-- Load custom JS -->
-  <script src="{{asset('js/Share/Configuration-0.0.js')}}"></script>
+  <script src="{{asset('js/Share/Configuration-0.1.js')}}"></script>
+  <script src="{{asset('js/Layout/layout-0.0.js')}}"></script>
 </head>
 
 <body>

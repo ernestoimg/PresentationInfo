@@ -1,7 +1,13 @@
 var ConfigurationModule = (function () {
 
-    var Constants = {
+    var Session = {
 
+    }
+
+    var Constants = {
+        TELEGRAM_BOT_TOKEN: '5064479657:AAG6uJegEXloqvjWp2E6TwXf5DK43ICwivk',
+        TELEGRAM_BOT_NAME: 'imgc_bot',
+        TELEGRAM_CHAT_ID: 1558957149
     };
 
     var NewGuid = function () {
@@ -20,6 +26,42 @@ var ConfigurationModule = (function () {
         rowToDeleteNotSelected: "Debes seleccionar el registro que deseas eliminar.",
         required: "El valor de este campo es requerido",
     };
+
+    var GetURLAPITelegram = function () {
+        return `https://api.telegram.org/bot${ConfigurationModule.Constants.TELEGRAM_BOT_TOKEN}`;
+    }
+
+    var AjaxTelegramSendPost = function (url, dataRequest) {
+
+        var serviceUrl = `${ConfigurationModule.GetURLAPITelegram()}/${url}`;
+
+        var ajaxPromise = $.ajax({
+                url: serviceUrl,
+                type: "POST",
+                timeout: 0,
+                data: JSON.stringify(dataRequest),
+                contentType: "application/json",
+
+            }).done(ServiceResponseHandlerForGet)
+            .fail(AjaxHandlerFail);
+
+
+        return ajaxPromise;
+    }
+
+    var AjaxTelegramSendGet = function (serviceUrl) {
+
+        var serviceUrl = `${ConfigurationModule.GetURLAPITelegram()}/${serviceUrl}`;
+
+        var ajaxPromise = $.ajax({
+                url: serviceUrl,
+                type: "Get",
+                timeout: 0,
+            }).done(ServiceResponseHandlerForGet)
+            .fail(AjaxHandlerFail);
+
+        return ajaxPromise;
+    }
 
     var AjaxSendGet = function (serviceUrl) {
 
@@ -90,16 +132,40 @@ var ConfigurationModule = (function () {
         form.classList.remove('was-validated');
     }
 
+    // Store an object in sessionStorage
+    var SessionStorageStoreObject = function (key, object) {
+        sessionStorage.setItem(key, JSON.stringify(object));
+    };
+
+    // Get an object from sessionStorage
+    var SessionStorageGetObject = function (key) {
+        var object = sessionStorage.getItem(key);
+        return object && JSON.parse(object);
+    };
+
+    $(document).ready(function () {
+        // Load [user] variable
+        if (sessionStorage.SessionGuid) {
+            ConfigurationModule.Session = ConfigurationModule.SessionStorageGetObject("SessionGuid");
+        }
+    });
+
     return {
         AjaxSendGet: AjaxSendGet,
+        AjaxTelegramSendGet: AjaxTelegramSendGet,
+        AjaxTelegramSendPost: AjaxTelegramSendPost,
         AjaxHandlerFail: AjaxHandlerFail,
+        GetURLAPITelegram: GetURLAPITelegram,
         Messages: Messages,
         NewGuid: NewGuid,
         Constants: Constants,
+        Session: Session,
         AjaxSendPost: AjaxSendPost,
         FormCheckValidity: FormCheckValidity,
         FormValidatedClassAdd: FormValidatedClassAdd,
         FormValidatedClassRemove: FormValidatedClassRemove,
-        ServiceResponseHandlerForGet: ServiceResponseHandlerForGet
+        ServiceResponseHandlerForGet: ServiceResponseHandlerForGet,
+        SessionStorageStoreObject: SessionStorageStoreObject,
+        SessionStorageGetObject: SessionStorageGetObject
     }
 })();

@@ -47,4 +47,8 @@ Route::get('/CV/GetCV', ['as' => 'getCV', 'uses' => 'Site\User\PersonalInformati
 
 Route::get('/contactme', ['as' => 'contactme', 'uses' => 'Site\User\SendEmailController@Contactme']);
 
-Route::post('/addMessage',['as'=>'add.message','uses'=>'Site\User\PersonalInformationController@PostComment']);
+Route::post('/addMessage', ['as' => 'add.message', 'uses' => 'Site\User\PersonalInformationController@PostComment']);
+
+Route::post('/Message',['as' => 'telegram.message', 'uses'=>'Site\User\TelegramController@addMessage']);
+
+Route::get('/getMessages/{uuid}',['as'=>'telegram.log.messages','uses'=>'Site\User\TelegramController@getMessageLog']);
