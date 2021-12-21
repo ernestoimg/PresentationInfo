@@ -112,8 +112,8 @@
             <div class="row">
               <div class="col-lg-6 col-sm-6">
                 <ul>
-                  <!--<li><a href="#">Categories</a></li>
-                  <li><a href="#">Reviews</a></li>-->
+                  <!--<li><a href="#">Categories</a></li>-->
+                  <li><a href="https://github.com/ernestoimg/PresentationInfo.git">GitHub SourceCode</a></li>
                   <li><a href="{{route('cv')}}">Curriculum</a></li>
                   <li><a href="{{route('contactme')}}">Contactame</a></li>
                 </ul>
