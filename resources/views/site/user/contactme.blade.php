@@ -23,7 +23,7 @@
                         </blockquote>
                     </figure>
                 </div>
-                <div class="card p-lg-5 p-md-2 p-sm-2 p-xs-2">
+                <div class="p-lg-5 p-md-2 p-sm-2 p-xs-2">
                     <form id="ContactMeForm" novalidate autocomplete="nope">
                         <div class="form-group mb-2">
                             <div class="form-check">
