@@ -5,9 +5,12 @@ var ConfigurationModule = (function () {
     }
 
     var Constants = {
-        TELEGRAM_BOT_TOKEN: '5064479657:AAG6uJegEXloqvjWp2E6TwXf5DK43ICwivk',
-        TELEGRAM_BOT_NAME: 'imgc_bot',
-        TELEGRAM_CHAT_ID: 1558957149
+        TELEGRAM_BOT_S1: '5019252636',
+        TELEGRAM_BOT_S2: 'AAF1Qgq2UvUa',
+        TELEGRAM_BOT_S3: 'MALSsIbXODL',
+        TELEGRAM_BOT_S4: 'wRmUTpc344LI',
+        TELEGRAM_BOT_NAME: 'imartgc1_bot',
+        TELEGRAM_CHAT_ID: -788509468
     };
 
     var NewGuid = function () {
@@ -27,8 +30,14 @@ var ConfigurationModule = (function () {
         required: "El valor de este campo es requerido",
     };
 
+    var TelegramBotToken = function(){
+        return [Constants.TELEGRAM_BOT_S1,":",Constants.TELEGRAM_BOT_S2,Constants.TELEGRAM_BOT_S3,Constants.TELEGRAM_BOT_S4].join("");
+    }
+
     var GetURLAPITelegram = function () {
-        return `https://api.telegram.org/bot${ConfigurationModule.Constants.TELEGRAM_BOT_TOKEN}`;
+        var token = ConfigurationModule.TelegramBotToken();
+
+        return `https://api.telegram.org/bot${token}`;
     }
 
     var AjaxTelegramSendPost = function (url, dataRequest) {
@@ -156,6 +165,7 @@ var ConfigurationModule = (function () {
         AjaxTelegramSendPost: AjaxTelegramSendPost,
         AjaxHandlerFail: AjaxHandlerFail,
         GetURLAPITelegram: GetURLAPITelegram,
+        TelegramBotToken:TelegramBotToken,
         Messages: Messages,
         NewGuid: NewGuid,
         Constants: Constants,

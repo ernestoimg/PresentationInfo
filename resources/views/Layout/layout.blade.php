@@ -40,8 +40,16 @@
   <!-- Load JQuery 3.6.0 -->
   <script src="{{asset('jquery/jquery-3.6.js')}}"></script>
 
+  <!-- Crypt MD5 -->
+  <script src="{{asset('CryptoJS/components/core.js')}}"></script>
+  <script src="{{asset('CryptoJS/components/enc-base64-min.js')}}"></script>
+  <script src="{{asset('CryptoJS/components/enc-utf16-min.js')}}"></script>
+  <script src="{{asset('CryptoJS/rollups/sha1.js')}}"></script>
+  <script src="{{asset('CryptoJS/rollups/aes.js')}}"></script>
+
+
   <!-- Load custom JS -->
-  <script src="{{asset('js/Share/Configuration-0.1.js')}}"></script>
+  <script src="{{asset('js/Share/Configuration-0.2.js')}}"></script>
   <script src="{{asset('js/Layout/layout-0.0.js')}}"></script>
 </head>
 
@@ -125,7 +133,7 @@
               </div>
             </div>
           </div>
-          
+
         </div>
         <div class="col-lg-4">
           <div class="contact-us">
