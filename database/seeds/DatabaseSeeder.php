@@ -116,7 +116,7 @@ class DatabaseSeeder extends Seeder
         $project4->Id = '2aa39b8d-09e9-499a-b5a9-3971a5db2775';
         $project4->Alias = "Ecommerce";
         $project4->ProjectName = "DESARROLLO DE SISTEMA WEB ECOMMERCE";
-        $project4->Description = "Desarrollo un sistema de Ecommerce para la empresa Eurest,donde ejecuto las funciones de desarrollo Frontend con JQuery Organization y consumo de recursos de servicios API, adicionalmente se diseñan las plantillas con Bootstrap 5";
+        $project4->Description = "Desarrollo de un sistema de Ecommerce para la empresa Eurest. El proyecto esta constituido por los siguientes componentes:\n 1. Portal de Administración Ecommerce - Diseñado para la configuración de catalogos y Centros de costo. \n 2. Portal de Administración de Comedores - Diseñado para administrar permisos, gestión de ventas y listado de facturación así como procesos de autorización para las compras por Centro de Costo.\n 3. Portal Web Ecommerce - Sitio para la realización de las compras de productos, adquisición de servicios y ventas en eventos (Estadios y conciertos).\n 4. Portal de Facturación - Diseñado para la generación de facturas CFDI basado en los tickets de compra de los clientes.";
         $project4->Icon = '<i class="fa fa-shopping-cart fa-3x mt-2" aria-hidden="true"></i>';
         $project4->IsVisible = '1';
         $project4->Company = "EUREST";

@@ -95,7 +95,7 @@
             </div>
             <div class="col-md-10 d-flex align-items-end">
                 <a data-bs-toggle="collapse" href="#collapseExample_!token" role="button" aria-expanded="false" aria-controls="collapseExample_!token">
-                    <h2 id="ProjectToolName_!token" style="color:darkgrey;"></h2>
+                    <h2 id="ProjectToolName_!token" style="color:darkgrey;"></h2> <span class="badge rounded-pill bg-success">Más detalles</span>
                 </a>
             </div>
         </div>

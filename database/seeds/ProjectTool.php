@@ -141,7 +141,124 @@ class ProjectTool extends Seeder
         $tool14->ProjectId = "e6bf7b3c-e000-4180-b270-320ffb621656";
         $tool14->DetailOfUse = "Uso de las hojas de estilo para manipulación de la visualización de los componenste html del sistema.";
 
-        $tools = array($tool0, $tool1, $tool2, $tool3, $tool4, $tool5, $tool6, $tool7, $tool8, $tool9, $tool10, $tool11, $tool12, $tool13, $tool14);
+        $tool15 = new ProjectToolsCollection;
+        $tool15->Id = $newGuid->guidv4(openssl_random_pseudo_bytes(16));
+        $tool15->ToolName = "Bootstrap";
+        $tool15->UserTimeMonths = "6";
+        $tool15->NivelQualification = "5";
+        $tool15->ProjectId = "52ca0905-fb39-4a45-896c-cd15d0b42d0e";
+        $tool15->DetailOfUse = "Uso de clases Bootstrap versión 4, así como vistas para los módulos de manera responsiva.";
+
+        $tool16 = new ProjectToolsCollection;
+        $tool16->Id = $newGuid->guidv4(openssl_random_pseudo_bytes(16));
+        $tool16->ToolName = "JQuery 3.2";
+        $tool16->UserTimeMonths = "6";
+        $tool16->NivelQualification = "4";
+        $tool16->ProjectId = "52ca0905-fb39-4a45-896c-cd15d0b42d0e";
+        $tool16->DetailOfUse = "Creación de funcionaes para manipulación de validaciones, envio de información y obtención de información consumientos metodos API REst con Ajax, así como uso de DataTable API para el muestreo de información en tablas. Adicionalmente se generan animaciones para los controles al momento de ejecuta alguna opción en las vistas o al no cumplir con alguna validación en el sistema.";
+
+        $tool17 = new ProjectToolsCollection;
+        $tool17->Id = $newGuid->guidv4(openssl_random_pseudo_bytes(16));
+        $tool17->ToolName = "Javascript";
+        $tool17->UserTimeMonths = "6";
+        $tool17->NivelQualification = "4";
+        $tool17->ProjectId = "52ca0905-fb39-4a45-896c-cd15d0b42d0e";
+        $tool17->DetailOfUse = "Generación de funciones y clases para lectura de las respuestas en formato JSON obtenidos en las consultas AJAX, almacenamiento de información en variables de sesión y validaciones de seguridad.";
+
+        $tool18 = new ProjectToolsCollection;
+        $tool18->Id = $newGuid->guidv4(openssl_random_pseudo_bytes(16));
+        $tool18->ToolName = "CSS";
+        $tool18->UserTimeMonths = "6";
+        $tool18->NivelQualification = "4";
+        $tool18->ProjectId = "52ca0905-fb39-4a45-896c-cd15d0b42d0e";
+        $tool18->DetailOfUse = "Utilizado para manipular y custimizar controles HTML, así como manipulación de las dimenciones de los controles utilizando funciones @media.";
+
+        $tool19 = new ProjectToolsCollection;
+        $tool19->Id = $newGuid->guidv4(openssl_random_pseudo_bytes(16));
+        $tool19->ToolName = "Bootstrap";
+        $tool19->UserTimeMonths = "12";
+        $tool19->NivelQualification = "4";
+        $tool19->ProjectId = "2aa39b8d-09e9-499a-b5a9-3971a5db2775";
+        $tool19->DetailOfUse = "Manejo de framework en su versión 5 para la generación de las vistas, diseño responsivo para dispositivos moviles, animaciones de componentes y ordenamientos de elementos.";
+
+        $tool20 = new ProjectToolsCollection;
+        $tool20->Id = $newGuid->guidv4(openssl_random_pseudo_bytes(16));
+        $tool20->ToolName = "JQuery";
+        $tool20->UserTimeMonths = "12";
+        $tool20->NivelQualification = "4";
+        $tool20->ProjectId = "2aa39b8d-09e9-499a-b5a9-3971a5db2775";
+        $tool20->DetailOfUse = "Utilizado para la obtención y envio de datos a servicios API con ajax, así como uso de DataTable Api para muestreo de información en tablas para los portales de administración y carga de catalogos, manipulación de los elementos en DOM para agregar productos al Carro de compras, así como uso de API de EVO para los pagos con tarjeta.";
+
+        $tool21 = new ProjectToolsCollection;
+        $tool21->Id = $newGuid->guidv4(openssl_random_pseudo_bytes(16));
+        $tool21->ToolName = "Javascript";
+        $tool21->UserTimeMonths = "12";
+        $tool21->NivelQualification = "4";
+        $tool21->ProjectId = "2aa39b8d-09e9-499a-b5a9-3971a5db2775";
+        $tool21->DetailOfUse = "La función principal es la lectura de la información obtenida de las APIs consumidas con respuestas en formato JSON, así como creación de funciones para mapeo de datos, validación de estructuras y prevención de errores al momento de que se envia información a las API´s.";
+
+        $tool22 = new ProjectToolsCollection;
+        $tool22->Id = $newGuid->guidv4(openssl_random_pseudo_bytes(16));
+        $tool22->ToolName = "C#";
+        $tool22->UserTimeMonths = "6";
+        $tool22->NivelQualification = "3";
+        $tool22->ProjectId = "2aa39b8d-09e9-499a-b5a9-3971a5db2775";
+        $tool22->DetailOfUse = "Lenguaje utilizado para la creación de proyectos Rest API, modelado de datos DTO, controladores y modelos de negocio para la generación de las consultas basados en Stores Procedures, así como pruebas unitarias para verificación de la funcionalidad.";
+
+        $tool23 = new ProjectToolsCollection;
+        $tool23->Id = $newGuid->guidv4(openssl_random_pseudo_bytes(16));
+        $tool23->ToolName = "SQL Server";
+        $tool23->UserTimeMonths = "6";
+        $tool23->NivelQualification = "5";
+        $tool23->ProjectId = "2aa39b8d-09e9-499a-b5a9-3971a5db2775";
+        $tool23->DetailOfUse = "El gestor de base de datos para el proyecto, creación de procedimientos almacenados para la devolución de información en las diferentes bases de datos utilizados en el proyecto.";
+
+
+        $tool24 = new ProjectToolsCollection;
+        $tool24->Id = $newGuid->guidv4(openssl_random_pseudo_bytes(16));
+        $tool24->ToolName = "Azure Storage Account";
+        $tool24->UserTimeMonths = "4";
+        $tool24->NivelQualification = "3";
+        $tool24->ProjectId = "2aa39b8d-09e9-499a-b5a9-3971a5db2775";
+        $tool24->DetailOfUse = "Contenedores creados en Azure para almacenamiento de archivos, imágenes y platillas para el sistema, del cual se realiza conexiones desde la aplicación para obtener acceso a los contenedores.";
+        
+        $tool25 = new ProjectToolsCollection;
+        $tool25->Id = $newGuid->guidv4(openssl_random_pseudo_bytes(16));
+        $tool25->ToolName = "TFS";
+        $tool25->UserTimeMonths = "6";
+        $tool25->NivelQualification = "4";
+        $tool25->ProjectId = "9acac9a1-d39b-4427-a9df-866d7bbfdf87";
+        $tool25->DetailOfUse = "Teams Foundation Server, servidor que almacena soluciones de proyectos desarrollados en Visual Studio. Del cual se realizó el proceso de actualización a Azure DevOps Server junto con los collection.";
+
+        $tool26 = new ProjectToolsCollection;
+        $tool26->Id = $newGuid->guidv4(openssl_random_pseudo_bytes(16));
+        $tool26->ToolName = "Azure DevOps Server";
+        $tool26->UserTimeMonths = "6";
+        $tool26->NivelQualification = "3";
+        $tool26->ProjectId = "9acac9a1-d39b-4427-a9df-866d7bbfdf87";
+        $tool26->DetailOfUse = "Azure DevOps Server, plataforma para almacenamiento de repositorios, así como el control de software, para dicho proyecto se desarrollaron plantillas Agile y CMMI para procesar la documentación, backlog e historicos de cambios del TFS a Azure DevOps Server.";
+
+        $tool27 = new ProjectToolsCollection;
+        $tool27->Id = $newGuid->guidv4(openssl_random_pseudo_bytes(16));
+        $tool27->ToolName = "Git Bash";
+        $tool27->UserTimeMonths = "6";
+        $tool27->NivelQualification = "4";
+        $tool27->ProjectId = "9acac9a1-d39b-4427-a9df-866d7bbfdf87";
+        $tool27->DetailOfUse = "Herramienta de control de cambios que permite conectarse medienta consola para carga de los archivos de proyectos. Se hizo uso de la herramienta para obtener cambios de repositorios creados en Azure DevOps y posteriormente se realizó la carga de los proyectos almacenados en TFS para subirlos a la cloud.";
+        
+        $tool28 = new ProjectToolsCollection;
+        $tool28->Id = $newGuid->guidv4(openssl_random_pseudo_bytes(16));
+        $tool28->ToolName = "Visual Studio";
+        $tool28->UserTimeMonths = "6";
+        $tool28->NivelQualification = "4";
+        $tool28->ProjectId = "9acac9a1-d39b-4427-a9df-866d7bbfdf87";
+        $tool28->DetailOfUse = "Manejo del IDE para conexión y obtención de los proyectos de TFS. Adicionalmente se crearón Workspaces y se actualizarón dependencias de los proyectos para cargar correctamente los repositorios a Azure DevOps Server.";
+        
+        $tools = array(
+            $tool0, $tool1, $tool2, $tool3, $tool4, $tool5, $tool6, $tool7, $tool8, $tool9, $tool10, $tool11,
+            $tool12, $tool13, $tool14, $tool15, $tool16, $tool17, $tool18, $tool19, $tool20, $tool21, $tool22,
+            $tool23, $tool24, $tool25, $tool26, $tool27, $tool28
+        );
 
         $toolcounter = 1;
         foreach ($tools as $tool) {
@@ -169,10 +286,10 @@ class ProjectTool extends Seeder
         $base64PDF = base64_encode($PdfContent);
 
         AttachFilesModel::create([
-            'id'=>$newGuid->guidv4(openssl_random_pseudo_bytes(16)),
-            'name'=>"ErnestoIvanMartinezGarcia",
-            'file'=>$base64PDF,
-            'type'=>'pdf'
+            'id' => $newGuid->guidv4(openssl_random_pseudo_bytes(16)),
+            'name' => "ErnestoIvanMartinezGarcia",
+            'file' => $base64PDF,
+            'type' => 'pdf'
         ]);
     }
 }
@@ -187,4 +304,3 @@ class ProjectToolsCollection
     public $ProjectId;
     public $DetailOfUse;
 }
-
